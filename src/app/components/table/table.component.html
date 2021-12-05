@@ -1,0 +1,48 @@
+<div class="card">
+
+  <div class="table">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="PetalLengthCm">
+        <th mat-header-cell *matHeaderCellDef>PetalLengthCm </th>
+        <td mat-cell *matCellDef="let element"> {{element.PetalLengthCm}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="PetalWidthCm">
+        <th mat-header-cell *matHeaderCellDef> PetalWidthCm </th>
+        <td mat-cell *matCellDef="let element"> {{element.PetalWidthCm}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="SepalLengthCm">
+        <th mat-header-cell *matHeaderCellDef> SepalLengthCm </th>
+        <td mat-cell *matCellDef="let element"> {{element.SepalLengthCm}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="SepalWidthCm">
+        <th mat-header-cell *matHeaderCellDef> SepalWidthCm </th>
+        <td mat-cell *matCellDef="let element"> {{element.SepalWidthCm}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Species">
+        <th mat-header-cell *matHeaderCellDef> Species </th>
+        <td mat-cell *matCellDef="let element"> {{element.Species}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'rowGreen': isSepalLengthAbove(row.SepalLengthCm), 'rowRed': !isSepalLengthAbove(row.SepalLengthCm)}"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+</div>
